@@ -1,25 +1,26 @@
-NorthOne Take-Home Challenge
+# NorthOne Take-Home Challenge
 
-Instructions:
+## Instructions:
 
-● We suggest taking no more than 2 - 3 hours to complete this challenge. Review the
-requirements below and prioritize your time – focusing on clean, organized code over
-pixel perfect results.
-● We ask that you complete this challenge within 5 days upon receiving it.
-● Submit your solution
-○ Use the Greenhouse link provided to you via email to submit your challenge.
-○ Clone the GitHub Repo
-○ Make sure the cloned repo is private
-○ Invite our team to review your repo:
-■ Zoe (Engineering Manager): zoe@northone.com
-■ Sin (Senior Mobile Developer)
-● Our team will reach out to schedule your technical interview. Be ready to demo (on
-Google Meet) what you have produced and discuss or extend your code.
-We would like you to help us finish building an application that
-displays a user’s bank account balance and their associated
-transactions.
+- We suggest taking no more than 2 - 3 hours to complete this challenge. Review the
+  requirements below and prioritize your time – focusing on clean, organized code over
+  pixel perfect results.
 
-Here is what we’d like you to tackle:
+- We ask that you complete this challenge within 5 days upon receiving it.
+- Submit your solution
+  - Use the Greenhouse link provided to you via email to submit your challenge.
+  - Clone the GitHub Repo
+  - Make sure the cloned repo is private
+  - Invite our team to review your repo:
+    - Zoe (Engineering Manager): zoe@northone.com
+    - Sin (Senior Mobile Developer)
+- Our team will reach out to schedule your technical interview. Be ready to demo (on
+  Google Meet) what you have produced and discuss or extend your code.
+  We would like you to help us finish building an application that
+  displays a user’s bank account balance and their associated
+  transactions.
+
+## Here is what we’d like you to tackle:
 
 1. Compute the account balance (in JavaScript) and display it.
 2. Compute the account balance via a native module (for both iOS and Android), and
