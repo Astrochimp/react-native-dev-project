@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Button, SafeAreaView, StatusBar, Text, View } from "react-native";
-
 import { fetchTransactions } from "./transaction-data";
 import { TransactionList } from "./transaction-list";
+import { Transaction } from "./types";
 
 const App = () => {
-  const balance = undefined;
   const [transactions, setTransactions] = React.useState([]);
+
+  async function updateTransactions() {
+    // TODO: Compute and set balance.
+    const response = await fetchTransactions();
+    const newTransactions = await response.json();
+    console.log('newTransactions', newTransactions.length);
+    setTransactions(newTransactions);
+  }
+
+  function updateNative() {
+    console.log('update native');
+  }
+
+  function calculateBalance({
+    transactions,
+  }: {
+    transactions: Transaction[];
+  }) {
+
+    let transTotal = 0;
+    const balance = transactions.map((trans) => {
+      transTotal = trans.amount + transTotal;
+    });
+
+    return transTotal;
+  }
+
+
+  console.log('TRANSACTION COUNT', transactions.length);
+  const balance = useMemo(() => {
+    return calculateBalance({ transactions });
+  }, [transactions]);
+  console.log('TOTAL', balance);
+
 
   return (
     <SafeAreaView>
@@ -29,25 +62,27 @@ const App = () => {
           flexDirection: "row",
           justifyContent: "space-evenly",
         }}>
+
         <Button
           title="Update (JS)"
-          onPress={async () => {
-            // TODO: Compute and set balance.
-
-            const response = await fetchTransactions();
-            const newTransactions = await response.json();
-            setTransactions(newTransactions);
-          }}
+          onPress={updateTransactions}
         />
+
         <Button
           title="Update (Native)"
-          onPress={() => {
-            // TODO: Compute balance via native module and set.
-            // TODO: Update transaction list.
-          }}
+          onPress={updateNative}
         />
+
       </View>
-      <TransactionList transactions={transactions} />
+
+      {transactions.length > 0 ? (
+        <TransactionList transactions={transactions} />
+      ) : (<View><Text style={{
+        width: "100%",
+        textAlign: "center",
+        fontSize: 20,
+        marginVertical: 20,
+      }}>No transactions</Text></View>)}
     </SafeAreaView>
   );
 };
