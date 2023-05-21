@@ -55,3 +55,10 @@
 - Commit changes like you normally would in a codebase shared with other developers.
   We want to get a glimpse into how you work!
 - If you don’t have a macOS machine and can’t build for iOS, focus on Android instead
+
+## Fixes:
+
+- ios was not building due to issues with Xcode 14.3 the recommended fix is to upgrade from 70.3 to 70.8
+  https://www.linkedin.com/pulse/react-native-developers-beware-xcode-143-update-heres-rajendran/
+
+  https://react-native-community.github.io/upgrade-helper/?from=0.70.3&to=0.70.8
