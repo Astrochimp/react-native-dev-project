@@ -37,19 +37,21 @@
    i. Add subtitle=“A fee may apply” under the title
    ii. Keep the font size the same as it is
    iii. Use the font color “slategray”
-   Miscellanea
-   ● The project is a vanilla React Native (v0.70.3) codebase, so standard React Native
-   tooling should be used to run it
-   ● Node and CocoaPods dependencies for the project will need to be installed
-   ● The codebase provided is intentionally bad in some aspects. Imagine this is a production
-   codebase that you’ll be leading development on going forward. You have the freedom to
-   change things as you wish, so if you see something that should be improved, feel free to
-   refactor it.
-   ● Consider the API that fetchTransactions() interacts with to be poorly designed, as it
-   doesn’t offer pagination. Every single transaction is returned!
-   ● A new list of transactions is generated for each run of the application, and a new
-   transaction is created each time the account is updated for demonstration purposes
-   ● Ignore floating point errors when doing math on monetary values
-   ● Commit changes like you normally would in a codebase shared with other developers.
-   We want to get a glimpse into how you work!
-   ● If you don’t have a macOS machine and can’t build for iOS, focus on Android instead
+
+## Miscellanea
+
+- The project is a vanilla React Native (v0.70.3) codebase, so standard React Native
+  tooling should be used to run it
+- Node and CocoaPods dependencies for the project will need to be installed
+- The codebase provided is intentionally bad in some aspects. Imagine this is a production
+  codebase that you’ll be leading development on going forward. You have the freedom to
+  change things as you wish, so if you see something that should be improved, feel free to
+  refactor it.
+- Consider the API that fetchTransactions() interacts with to be poorly designed, as it
+  doesn’t offer pagination. Every single transaction is returned!
+- A new list of transactions is generated for each run of the application, and a new
+  transaction is created each time the account is updated for demonstration purposes
+- Ignore floating point errors when doing math on monetary values
+- Commit changes like you normally would in a codebase shared with other developers.
+  We want to get a glimpse into how you work!
+- If you don’t have a macOS machine and can’t build for iOS, focus on Android instead
