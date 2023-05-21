@@ -33,13 +33,15 @@ const App = () => {
     return transTotal;
   }
 
-
   console.log('TRANSACTION COUNT', transactions.length);
   const balance = useMemo(() => {
     return calculateBalance({ transactions });
   }, [transactions]);
   console.log('TOTAL', balance);
 
+  const balanceNumberFormat = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
+    balance,
+  );
 
   return (
     <SafeAreaView>
@@ -51,7 +53,7 @@ const App = () => {
           fontSize: 20,
           marginVertical: 20,
         }}>
-        Balance: {balance !== undefined ? balance : "?"}
+        Balance: {balance !== undefined ? balanceNumberFormat : "?"}
       </Text>
       <View
         style={{
@@ -77,12 +79,18 @@ const App = () => {
 
       {transactions.length > 0 ? (
         <TransactionList transactions={transactions} />
-      ) : (<View><Text style={{
-        width: "100%",
-        textAlign: "center",
-        fontSize: 20,
-        marginVertical: 20,
-      }}>No transactions</Text></View>)}
+      ) : (
+        <View>
+          <Text style={{
+            width: "100%",
+            textAlign: "center",
+            fontSize: 20,
+            marginVertical: 20,
+          }}>
+            No transactions
+          </Text>
+        </View>
+      )}
     </SafeAreaView>
   );
 };
