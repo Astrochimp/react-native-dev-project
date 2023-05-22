@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Button, SafeAreaView, StatusBar, Text, View } from "react-native";
+import { Button, SafeAreaView, StatusBar, Text, View, NativeModules } from "react-native";
 import { fetchTransactions } from "./transaction-data";
 import { TransactionList } from "./transaction-list";
 import { Transaction } from "./types";
@@ -11,12 +11,17 @@ const App = () => {
     // TODO: Compute and set balance.
     const response = await fetchTransactions();
     const newTransactions = await response.json();
-    console.log('newTransactions', newTransactions.length);
     setTransactions(newTransactions);
   }
 
-  function updateNative() {
+  async function updateNative() {
     console.log('update native');
+    const response = await fetchTransactions();
+    const newTransactions = await response.json();
+    setTransactions(newTransactions);
+    NativeModules.BalanceCalc.calculateBalance(newTransactions, (newBalace: Number) => {
+      console.log('new balance', newBalace);
+    });
   }
 
   function calculateBalance({
@@ -33,11 +38,9 @@ const App = () => {
     return transTotal;
   }
 
-  console.log('TRANSACTION COUNT', transactions.length);
   const balance = useMemo(() => {
     return calculateBalance({ transactions });
   }, [transactions]);
-  console.log('TOTAL', balance);
 
   const balanceNumberFormat = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
     balance,
