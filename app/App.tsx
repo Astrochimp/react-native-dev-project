@@ -6,6 +6,7 @@ import { Transaction } from "./types";
 
 const App = () => {
   const [transactions, setTransactions] = React.useState([]);
+  const [nativeBalance, setNativeBalance] = React.useState('');
 
   async function updateTransactions() {
     // TODO: Compute and set balance.
@@ -14,13 +15,21 @@ const App = () => {
     setTransactions(newTransactions);
   }
 
+  function updateNativeBalance({ balance }: { balance: number; }) {
+    const balanceNumberFormat = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
+      balance,
+    );
+    setNativeBalance(balanceNumberFormat);
+  }
+
   async function updateNative() {
     console.log('update native');
     const response = await fetchTransactions();
     const newTransactions = await response.json();
-    setTransactions(newTransactions);
-    NativeModules.BalanceCalc.calculateBalance(newTransactions, (newBalace: Number) => {
-      console.log('new balance', newBalace);
+    // setTransactions(newTransactions);
+    NativeModules.BalanceCalc.calculateBalance(newTransactions, (newBalance: number) => {
+      console.log('new balance', newBalance);
+      updateNativeBalance({ balance: newBalance });
     });
   }
 
@@ -57,6 +66,16 @@ const App = () => {
           marginVertical: 20,
         }}>
         Balance: {balance !== undefined ? balanceNumberFormat : "?"}
+
+      </Text>
+      <Text
+        style={{
+          width: "100%",
+          textAlign: "center",
+          fontSize: 20,
+          marginVertical: 20,
+        }}>
+        Native Balance: {nativeBalance !== '' ? nativeBalance : '0'}
       </Text>
       <View
         style={{

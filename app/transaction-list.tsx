@@ -24,7 +24,7 @@ export const TransactionList = ({
       </Text>
       <FlatList
         data={transactions.reverse()}
-        keyExtractor={transaction => transaction.id + ''}
+        keyExtractor={transaction => `${transaction.id}-${transaction.amount}`}
         renderItem={tra => {
           return (
             <TransactionListItem transaction={tra.item} />
