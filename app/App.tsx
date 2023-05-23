@@ -23,12 +23,10 @@ const App = () => {
   }
 
   async function updateNative() {
-    console.log('update native');
     const response = await fetchTransactions();
     const newTransactions = await response.json();
     // setTransactions(newTransactions);
     NativeModules.BalanceCalc.calculateBalance(newTransactions, (newBalance: number) => {
-      console.log('new balance', newBalance);
       updateNativeBalance({ balance: newBalance });
     });
   }
