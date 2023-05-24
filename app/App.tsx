@@ -12,6 +12,7 @@ const App = () => {
     // TODO: Compute and set balance.
     const response = await fetchTransactions();
     const newTransactions = await response.json();
+    // Balance is calculated once transations is updated using the useMemo hook
     setTransactions(newTransactions);
   }
 

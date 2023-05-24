@@ -10,6 +10,13 @@ export const TransactionList = ({
   transactions: Transaction[];
 }) => {
 
+  /*
+    Removed ScrollView and individual Views in favor of FlatList
+    which provides better performance for long lists.
+
+    FlatList also has built in pagination and can add features for infinite scrolling and lazy loading
+
+  */
   return (
     <View>
       <Text

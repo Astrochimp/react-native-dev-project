@@ -23,6 +23,9 @@ export const TransactionListItem = ({
      *       1. add subtitle="A fee may apply" under the title
      *       2. keep the regular font size
      *       3. use font color "slategray"
+     *
+     *
+     * Added logic for both TODO items above
      */
     />
   );
